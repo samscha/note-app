@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { resetError } from '../actions';
+
 import logo from '../assets/logo.svg';
-// import './App.css';
+
+import '../styles/css/index.css';
 
 class App extends Component {
+  componentDidMount() {
+    this.resetError();
+  }
+
+  resetError = _ => {
+    this.props.resetError();
+  };
+
   render() {
     return (
       <div className="App">
@@ -18,4 +30,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    //
+  };
+};
+
+export default connect(mapStateToProps, { resetError })(App);

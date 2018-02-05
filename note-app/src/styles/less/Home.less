@@ -1,0 +1,72 @@
+@bottom-height: 120px;
+
+.Home {
+	height: 100vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.HomeTitle {
+		margin-bottom: 7px;
+
+		font-size: 5rem;
+	}
+
+	.HomeNotLoggedIn {
+		height: @bottom-height;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		.HomeDescription {
+			margin-bottom: 24px;
+
+			font-size: 1.2rem;
+		}
+
+		.HomeLogin {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			.InputFields {
+				display: flex;
+				flex-direction: column;
+
+				input {
+					text-align: center;
+					margin: 2px 0;
+				}
+			}
+
+			.HomeLoginButton__button {
+				margin-top: 7px;
+			}
+		}
+	}
+
+	.HomeToApp {
+		width: 80%;
+		height: @bottom-height;
+
+		border: solid 1px;
+
+		text-decoration: none;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&:hover {
+			background: black;
+			color: white;
+		}
+
+		p {
+			font-size: 2.6rem;
+		}
+	}
+}

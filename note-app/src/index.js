@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import rootReducer from './reducers';
 
+import Home from './components/Home';
 import App from './components/App';
 
 import './styles/css/index.css';
@@ -22,7 +23,8 @@ ReactDOM.render(
 		<Router>
 			<div>
 				<Switch>
-					<Route exact path="/" component={App} />
+					<Route path="/app" component={App} />
+					<Route exact path="/" component={Home} />
 				</Switch>
 			</div>
 		</Router>

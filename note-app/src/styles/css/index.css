@@ -130,8 +130,67 @@ table {
   box-sizing: border-box;
 }
 body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
   font-size: 62.5%;
   min-width: 300px;
+}
+body p {
+  font-size: 1.2rem;
+}
+.Home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Home .HomeTitle {
+  margin-bottom: 7px;
+  font-size: 5rem;
+}
+.Home .HomeNotLoggedIn {
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Home .HomeNotLoggedIn .HomeDescription {
+  margin-bottom: 24px;
+  font-size: 1.2rem;
+}
+.Home .HomeNotLoggedIn .HomeLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Home .HomeNotLoggedIn .HomeLogin .InputFields {
+  display: flex;
+  flex-direction: column;
+}
+.Home .HomeNotLoggedIn .HomeLogin .InputFields input {
+  text-align: center;
+  margin: 2px 0;
+}
+.Home .HomeNotLoggedIn .HomeLogin .HomeLoginButton__button {
+  margin-top: 7px;
+}
+.Home .HomeToApp {
+  width: 80%;
+  height: 120px;
+  border: solid 1px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Home .HomeToApp:hover {
+  background: black;
+  color: white;
+}
+.Home .HomeToApp p {
+  font-size: 2.6rem;
 }
 .App {
   text-align: center;
