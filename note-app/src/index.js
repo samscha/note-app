@@ -1,8 +1,31 @@
+// react
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+// redux
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+// react-router
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+import rootReducer from './reducers';
+
+import App from './components/App';
+
+import './styles/css/index.css';
+
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
+
+ReactDOM.render(
+	<Provider store={store}>
+		<Router>
+			<div>
+				<Switch>
+					<Route exact path="/" component={App} />
+				</Switch>
+			</div>
+		</Router>
+	</Provider>,
+	document.getElementById('root'),
+);
