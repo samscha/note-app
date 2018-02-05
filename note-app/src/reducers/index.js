@@ -1,15 +1,49 @@
 import * as actionType from '../actions';
 
+// const initialState = {
+// 	users: [
+// 		{
+// 			username: '',
+// 			password: '',
+// 		},
+// 	],
+// 	usersCurrentlyLoggedIn: [],
+// 	isLoggedIn: false,
+// 	notes: [],
+// 	error: '',
+// };
+
 const initialState = {
 	users: [
 		{
-			username: '1',
-			password: '1',
+			username: '',
+			password: '',
 		},
 	],
 	usersCurrentlyLoggedIn: [],
 	isLoggedIn: false,
-	notes: [],
+	notes: [
+		{
+			id: 0,
+			text: 'test notes',
+		},
+		{
+			id: 1,
+			text: 'make an actual notes here,}',
+		},
+		{
+			id: 2,
+			text: '33333333332,}',
+		},
+		{
+			id: 3,
+			text: 'test asdaofadsji adsjfj2,}',
+		},
+		{
+			id: 4,
+			text: 'test asdaofadsjiadsfsajkfjasjfiasjifadsjfj2,}',
+		},
+	],
 	error: '',
 };
 

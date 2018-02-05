@@ -4,6 +4,8 @@ import { resetError, signOut } from '../actions';
 import { NavLink } from 'react-router-dom';
 
 import NotLoggedIn from './NotLoggedIn';
+import Notes from './Notes';
+
 // import logo from '../assets/logo.svg';
 
 import '../styles/css/index.css';
@@ -45,9 +47,7 @@ class App extends Component {
               <p className="AppHeader__title">Notes&reg;</p>
             </header>
 
-            <div className="App-intro">
-              To get started, edit <code>src/App.js</code> and save to reload.
-            </div>
+            <Notes notes={this.props.notes} />
           </div>
         ) : (
           <div className="AppNotLoggedIn">
@@ -62,6 +62,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     isLoggedIn: state.isLoggedIn,
+    notes: state.notes,
     //
   };
 };
