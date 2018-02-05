@@ -9,6 +9,10 @@ import NotLoggedIn from './NotLoggedIn';
 import '../styles/css/index.css';
 
 class App extends Component {
+  state = {
+    username: '1',
+  };
+
   componentDidMount() {
     this.resetError();
   }

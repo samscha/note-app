@@ -18,8 +18,9 @@ export const resetError = _ => {
 	};
 };
 
-export const signOut = _ => {
+export const signOut = username => {
 	return {
 		type: SIGN_OUT,
+		payload: username,
 	};
 };
