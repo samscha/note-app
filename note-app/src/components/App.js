@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { resetError, signOut } from '../actions';
 import { NavLink } from 'react-router-dom';
 
+import StatusBar from './StatusBar';
 import NotLoggedIn from './NotLoggedIn';
 import Notes from './Notes';
 
@@ -32,16 +33,10 @@ class App extends Component {
       <div className="App">
         {this.props.isLoggedIn ? (
           <div className="AppLoggedIn">
-            <div className="AppStatusBar">
-              <NavLink to="/" className="AppStatusBar__SignOutButton--NavLink">
-                <button
-                  className="AppStatusBar__SignOutButton"
-                  onClick={this.signOut}
-                >
-                  Sign out
-                </button>
-              </NavLink>
-            </div>
+            <StatusBar
+              username={this.state.username}
+              signOutHandler={this.signOut}
+            />
 
             <header className="AppHeader">
               <p className="AppHeader__title">Notes&reg;</p>
