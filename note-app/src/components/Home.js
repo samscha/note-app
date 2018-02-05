@@ -54,12 +54,12 @@ class Home extends Component {
 								/>
 							</div>
 
-							<input
+							<div
 								className="HomeLoginButton__button"
-								type="button"
-								value="Login"
 								onClick={this.checkLoginHandler}
-							/>
+							>
+								Login
+							</div>
 						</form>
 					</div>
 				) : (
