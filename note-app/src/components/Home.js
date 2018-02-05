@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { checkLogin } from '../actions';
-
 import { NavLink } from 'react-router-dom';
+
+import { checkLogin } from '../actions';
 
 import '../styles/css/index.css';
 

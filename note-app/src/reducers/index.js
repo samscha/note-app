@@ -38,6 +38,12 @@ const rootReducer = (state = initialState, action) => {
 				error: '',
 			};
 
+		case actionType.SIGN_OUT:
+			return {
+				...state,
+				isLoggedIn: false,
+			};
+
 		default:
 			return state;
 	}

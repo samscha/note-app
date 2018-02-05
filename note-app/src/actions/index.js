@@ -2,6 +2,7 @@
 
 export const CHECK_LOGIN = 'CHECK_LOGIN';
 export const RESET_ERROR = 'RESET_ERROR';
+export const SIGN_OUT = 'SIGN_OUT';
 export const NOTES_FETCHING = 'NOTES_FETCHING';
 
 export const checkLogin = credentials => {
@@ -14,5 +15,11 @@ export const checkLogin = credentials => {
 export const resetError = _ => {
 	return {
 		type: RESET_ERROR,
+	};
+};
+
+export const signOut = _ => {
+	return {
+		type: SIGN_OUT,
 	};
 };
