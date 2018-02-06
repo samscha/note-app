@@ -46,6 +46,7 @@ class Home extends Component {
 								<input
 									className="InputFields__username"
 									onChange={this.inputHandler}
+									onKeyUp={this.checkIfEnter}
 									type="text"
 									name="username"
 									value={this.state.username}
