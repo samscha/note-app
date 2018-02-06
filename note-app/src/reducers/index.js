@@ -97,6 +97,12 @@ const rootReducer = (state = initialState, action) => {
 				isLoggedIn: false,
 			};
 
+		case actionType.ADD_NOTE:
+			return {
+				...state,
+				notes: [...state.notes, { ...action.payload, id: state.id++ }],
+			};
+
 		default:
 			return state;
 	}

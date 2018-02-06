@@ -7,8 +7,13 @@ class AddNewNote extends Component {
 	};
 
 	addNewNoteClickHandler = _ => {
-		// this.props.addNote(this.state};
-		// this.setState({title: '', text: '',}))
+		this.props.addNoteHandler(this.state);
+
+		this.setState({ title: '', text: '' });
+	};
+
+	inputHandler = e => {
+		this.setState({ [e.target.name]: e.target.value });
 	};
 
 	render() {
@@ -17,7 +22,34 @@ class AddNewNote extends Component {
 				{!this.props.appIsAddingNote ? (
 					<div className="NotAddingNewNote">+</div>
 				) : (
-					'hi'
+					<div className="IsAddingNewNote">
+						<form className="NewNote">
+							<input
+								className="NewNote__title"
+								onChange={this.inputHandler}
+								type="text"
+								name="title"
+								value={this.state.title}
+								placeholder="title"
+							/>
+
+							<textarea
+								className="NewNote__text"
+								onChange={this.inputHandler}
+								type="text"
+								name="text"
+								value={this.state.text}
+								placeholder="note"
+							/>
+						</form>
+
+						<div
+							className="NewNote__button"
+							onClick={this.addNewNoteClickHandler}
+						>
+							add note
+						</div>
+					</div>
 				)}
 			</div>
 		);

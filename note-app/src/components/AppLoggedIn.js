@@ -13,13 +13,20 @@ class AppLoggedIn extends Component {
     isAddingNote: false,
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.notes.length === this.props.notes.length + 1)
+      this.noteAddedSuccessfully();
+  }
+
   addNewNoteButtonClickedHandler = _ => {
     this.setState({ isAddingNote: true });
   };
 
   addNoteHandler = note => {
     this.props.addNote(note);
+  };
 
+  noteAddedSuccessfully = _ => {
     this.setState({ isAddingNote: false });
   };
 
@@ -40,7 +47,7 @@ class AppLoggedIn extends Component {
           />
         </div>
 
-        <Notes notes={this.props.notes} />
+        {this.state.isAddingNote ? null : <Notes notes={this.props.notes} />}
       </div>
     );
   }
