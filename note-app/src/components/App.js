@@ -14,7 +14,6 @@ import '../styles/css/index.css';
 class App extends Component {
   state = {
     username: '',
-    isAddingNote: false,
   };
 
   componentDidMount() {
