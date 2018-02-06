@@ -49,7 +49,7 @@ class Home extends Component {
 								<input
 									className="InputFields__password"
 									onChange={this.inputHandler}
-									type="text"
+									type="password"
 									name="password"
 									value={this.state.password}
 									placeholder="password"
