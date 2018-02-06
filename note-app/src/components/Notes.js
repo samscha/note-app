@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Note from './Note';
+
 import '../styles/css/index.css';
 
 const Notes = props => {
@@ -9,9 +11,8 @@ const Notes = props => {
 		<div className="Notes">
 			{notes.map(note => {
 				return (
-					<div key={note.id} className="Note">
-						<div className="Note__title">{note.title}</div>
-						<div className="Note__text">{note.text}</div>
+					<div key={note.id} className="NoteContainer">
+						<Note note={note} />
 					</div>
 				);
 			})}
