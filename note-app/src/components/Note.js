@@ -1,31 +1,57 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { editNote } from '../actions';
+
+import NoteTitle from './NoteTitle';
+import NoteText from './NoteText';
 
 import '../styles/css/index.css';
 
 class Note extends Component {
 	state = {
+		id: -1,
 		title: '',
 		text: '',
 	};
 
 	componentDidMount() {
-		this.setState({ title: this.props.note.title, text: this.props.note.text });
+		this.setState({
+			id: this.props.note.id,
+			title: this.props.note.title,
+			text: this.props.note.text,
+		});
 	}
 
-	noteClickHandler = _ => {
-		this.setState({ isEditing: this.state.isEditing });
+	editTitle = editedTitle => {
+		this.props.editNote({ ...this.state, title: editedTitle });
+
+		this.setState({ title: editedTitle });
+	};
+
+	editText = editedText => {
+		this.props.editNote({ ...this.state, text: editedText });
+
+		this.setState({ text: editedText });
 	};
 
 	render() {
 		return (
 			<div className="Note" onClick={this.noteClickHandler}>
-				<div className="IsNotEditing">
-					<div className="Note__title">{this.state.title}</div>
-					<div className="Note__text">{this.state.text}</div>
-				</div>
+				<NoteTitle
+					title={this.props.note.title}
+					editTitleHandler={this.editTitle}
+				/>
+				<NoteText text={this.props.note.text} editTextHandler={this.editText} />
 			</div>
 		);
 	}
 }
 
-export default Note;
+const mapStateToProps = state => {
+	return {
+		//
+	};
+};
+
+export default connect(mapStateToProps, { editNote })(Note);

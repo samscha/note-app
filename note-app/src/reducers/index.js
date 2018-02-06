@@ -103,6 +103,19 @@ const rootReducer = (state = initialState, action) => {
 				notes: [...state.notes, { id: state.id++, ...action.payload }],
 			};
 
+		case actionType.EDIT_NOTE:
+			return {
+				...state,
+				notes: state.notes.map(note => {
+					if (note.id === action.payload.id) {
+						note.title = action.payload.title;
+						note.text = action.payload.text;
+					}
+
+					return note;
+				}),
+			};
+
 		default:
 			return state;
 	}
