@@ -14,6 +14,7 @@ import * as actionType from '../actions';
 // };
 
 const initialState = {
+	id: 5,
 	users: [
 		{
 			username: '',

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { resetError, signOut } from '../actions';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 import StatusBar from './StatusBar';
 import AddNewNote from './AddNewNote';
@@ -15,6 +15,7 @@ import '../styles/css/index.css';
 class App extends Component {
   state = {
     username: '1',
+    isAddingNote: false,
   };
 
   componentDidMount() {
@@ -26,7 +27,17 @@ class App extends Component {
   };
 
   signOut = _ => {
-    this.props.signOut();
+    this.props.signOut(this.state.username);
+  };
+
+  addNewNoteButtonClickedHandler = _ => {
+    this.setState({ isAddingNote: true });
+  };
+
+  addNoteHandler = note => {
+    this.props.addNote(note);
+
+    this.setState({ isAddingNote: false });
   };
 
   render() {
@@ -43,8 +54,14 @@ class App extends Component {
               <p className="AppHeader__title">Notes&reg;</p>
             </header>
 
-            <div className="MidStatusBar">
-              <AddNewNote />
+            <div
+              className="MidStatusBar"
+              onClick={this.addNewNoteButtonClickedHandler}
+            >
+              <AddNewNote
+                addNoteHandler={this.addNoteHandler}
+                appIsAddingNote={this.state.isAddingNote}
+              />
             </div>
 
             <Notes notes={this.props.notes} />
