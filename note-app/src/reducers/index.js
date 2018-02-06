@@ -47,7 +47,7 @@ const initialState = {
 		{
 			id: 4,
 			title: 'title5',
-			text: 'test asdaofadsjiadsfsajkfjasjfiasjifadsjfj2,}',
+			text: 'test asdf,}',
 		},
 	],
 	error: '',
@@ -100,7 +100,7 @@ const rootReducer = (state = initialState, action) => {
 		case actionType.ADD_NOTE:
 			return {
 				...state,
-				notes: [...state.notes, { ...action.payload, id: state.id++ }],
+				notes: [...state.notes, { id: state.id++, ...action.payload }],
 			};
 
 		default:
