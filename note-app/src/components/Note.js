@@ -37,7 +37,7 @@ class Note extends Component {
 
 	render() {
 		return (
-			<div className="Note" onClick={this.noteClickHandler}>
+			<div className="Note">
 				<NoteTitle
 					title={this.props.note.title}
 					editTitleHandler={this.editTitle}

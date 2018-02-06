@@ -38,7 +38,7 @@ const initialState = {
 		{
 			id: 2,
 			title: 'title3',
-			text: '33333333332,}',
+			text: '33333333332, this is mock data with two lines hopefully',
 		},
 		{
 			id: 3,
