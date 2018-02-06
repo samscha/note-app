@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { editNote } from '../actions';
+import { editNote, deleteNote } from '../actions';
 
 import NoteTitle from './NoteTitle';
 import NoteText from './NoteText';
@@ -35,9 +35,20 @@ class Note extends Component {
 		this.setState({ text: editedText });
 	};
 
+	deleteNoteButtonClickedHandler = _ => {
+		this.props.deleteNote(this.state.id);
+	};
+
 	render() {
 		return (
 			<div className="Note">
+				<div
+					className="DeleteNoteButton"
+					onClick={this.deleteNoteButtonClickedHandler}
+				>
+					&#x2715;
+				</div>
+
 				<NoteTitle
 					title={this.props.note.title}
 					editTitleHandler={this.editTitle}
@@ -54,4 +65,4 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps, { editNote })(Note);
+export default connect(mapStateToProps, { editNote, deleteNote })(Note);
