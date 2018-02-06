@@ -50,7 +50,14 @@ class AppLoggedIn extends Component {
           />
         </div>
 
-        {this.state.isAddingNote ? null : <Notes notes={this.props.notes} />}
+        {this.props.notes.length > 0 ||
+        (this.props.notes.length === 0 && this.state.isAddingNote) ? (
+          this.state.isAddingNote ? null : (
+            <Notes notes={this.props.notes} />
+          )
+        ) : (
+          <div className="AppLoggedInNoNotesInState">No notes. Add some!</div>
+        )}
       </div>
     );
   }
