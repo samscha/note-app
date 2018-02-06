@@ -72,7 +72,7 @@ class Home extends Component {
 						</form>
 					</div>
 				) : (
-					<Redirect to="/app" />
+					<Redirect to={`/app/${this.state.username}`} />
 				)}
 			</div>
 		);

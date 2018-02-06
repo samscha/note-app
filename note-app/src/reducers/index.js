@@ -73,15 +73,22 @@ const rootReducer = (state = initialState, action) => {
 				}
 			} else error = 'Username not found. Please try again';
 
-			return {
-				...state,
-				usersCurrentlyLoggedIn: [
-					...state.usersCurrentlyLoggedIn,
-					addUserToLoggedIn,
-				],
-				isLoggedIn: isLoggedIn,
-				error: error,
-			};
+			if (isLoggedIn)
+				return {
+					...state,
+					usersCurrentlyLoggedIn: [
+						...state.usersCurrentlyLoggedIn,
+						addUserToLoggedIn,
+					],
+					isLoggedIn: isLoggedIn,
+					error: error,
+				};
+			else
+				return {
+					...state,
+					isLoggedIn: isLoggedIn,
+					error: error,
+				};
 
 		case actionType.RESET_ERROR:
 			return {
@@ -93,7 +100,7 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				usersCurrentlyLoggedIn: state.usersCurrentlyLoggedIn.filter(
-					username => username === action.payload,
+					user => user.username === action.payload,
 				),
 				isLoggedIn: false,
 			};
