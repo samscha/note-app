@@ -25,22 +25,27 @@ const initialState = {
 	notes: [
 		{
 			id: 0,
+			title: 'title1',
 			text: 'test notes',
 		},
 		{
 			id: 1,
+			title: 'title2',
 			text: 'make an actual notes here,}',
 		},
 		{
 			id: 2,
+			title: 'title3',
 			text: '33333333332,}',
 		},
 		{
 			id: 3,
+			title: 'title4',
 			text: 'test asdaofadsji adsjfj2,}',
 		},
 		{
 			id: 4,
+			title: 'title5',
 			text: 'test asdaofadsjiadsfsajkfjasjfiasjifadsjfj2,}',
 		},
 	],

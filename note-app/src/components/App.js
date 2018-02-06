@@ -4,8 +4,9 @@ import { resetError, signOut } from '../actions';
 import { NavLink } from 'react-router-dom';
 
 import StatusBar from './StatusBar';
-import NotLoggedIn from './NotLoggedIn';
+import AddNewNote from './AddNewNote';
 import Notes from './Notes';
+import NotLoggedIn from './NotLoggedIn';
 
 // import logo from '../assets/logo.svg';
 
@@ -41,6 +42,10 @@ class App extends Component {
             <header className="AppHeader">
               <p className="AppHeader__title">Notes&reg;</p>
             </header>
+
+            <div className="MidStatusBar">
+              <AddNewNote />
+            </div>
 
             <Notes notes={this.props.notes} />
           </div>

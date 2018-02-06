@@ -10,7 +10,8 @@ const Notes = props => {
 			{notes.map(note => {
 				return (
 					<div key={note.id} className="Note">
-						{note.text}
+						<div className="Note__title">{note.title}</div>
+						<div className="Note__text">{note.text}</div>
 					</div>
 				);
 			})}
