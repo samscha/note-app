@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TextareaAutosize from 'react-autosize-textarea';
 
 import '../styles/css/index.css';
 
@@ -15,12 +16,6 @@ class NoteText extends Component {
 		this.setState({ text: e.target.value });
 	};
 
-	checkIfEnter = e => {
-		if (e.keyCode === 13) {
-			this.props.editTextHandler(this.state.text);
-		}
-	};
-
 	checkIfTextChanged = _ => {
 		if (this.state.text !== this.props.text) {
 			this.props.editTextHandler(this.state.text);
@@ -30,12 +25,11 @@ class NoteText extends Component {
 	render() {
 		return (
 			<div className="NoteText">
-				<input
+				<TextareaAutosize
 					className="NoteText__input"
 					onChange={this.handleInputChange}
 					type="text"
 					value={this.state.text}
-					onKeyUp={this.checkIfEnter}
 					onBlur={this.checkIfTextChanged}
 				/>
 			</div>

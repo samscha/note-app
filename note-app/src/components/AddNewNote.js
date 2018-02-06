@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TextareaAutosize from 'react-autosize-textarea';
 
 class AddNewNote extends Component {
 	state = {
@@ -38,7 +39,7 @@ class AddNewNote extends Component {
 								placeholder="title"
 							/>
 
-							<textarea
+							<TextareaAutosize
 								className="NewNote__text"
 								onChange={this.inputHandler}
 								type="text"

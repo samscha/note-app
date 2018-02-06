@@ -32,7 +32,8 @@ const initialState = {
 		{
 			id: 1,
 			title: 'title2',
-			text: 'make an actual notes here,}',
+			text:
+				'make an actual notes here,} mock data mock mock data mock mock data mock mock data mock mock data mock ',
 		},
 		{
 			id: 2,
