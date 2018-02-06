@@ -18,6 +18,10 @@ class AppLoggedIn extends Component {
       this.noteAddedSuccessfully();
   }
 
+  cancelAddNewButtonClicked = _ => {
+    this.setState({ isAddingNote: false });
+  };
+
   addNewNoteButtonClickedHandler = _ => {
     this.setState({ isAddingNote: true });
   };
@@ -39,6 +43,7 @@ class AppLoggedIn extends Component {
 
         <div className="AppLoggedInMidStatusBar">
           <AddNewNote
+            cancelAddNewNoteClickHandler={this.cancelAddNewButtonClicked}
             addNewNoteButtonClickedHandler={this.addNewNoteButtonClickedHandler}
             addNoteHandler={this.addNoteHandler}
             appIsAddingNote={this.state.isAddingNote}

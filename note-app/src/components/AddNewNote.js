@@ -7,6 +7,12 @@ class AddNewNote extends Component {
 		text: '',
 	};
 
+	cancelAddNewNoteClickHandler = _ => {
+		this.setState({ title: '', text: '' });
+
+		this.props.cancelAddNewNoteClickHandler();
+	};
+
 	addNewNoteClickHandler = _ => {
 		this.props.addNoteHandler(this.state);
 
@@ -29,6 +35,13 @@ class AddNewNote extends Component {
 					</div>
 				) : (
 					<div className="IsAddingNewNote">
+						<div
+							className="NewNote__cancelButton"
+							onClick={this.cancelAddNewNoteClickHandler}
+						>
+							cancel
+						</div>
+
 						<form className="NewNote">
 							<input
 								className="NewNote__title"
