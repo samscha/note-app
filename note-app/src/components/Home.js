@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 
 import { checkLogin } from '../actions';
 
@@ -63,9 +63,7 @@ class Home extends Component {
 						</form>
 					</div>
 				) : (
-					<NavLink to="/app" className="HomeToApp">
-						<p>Enter</p>
-					</NavLink>
+					<Redirect to="/app" />
 				)}
 			</div>
 		);
