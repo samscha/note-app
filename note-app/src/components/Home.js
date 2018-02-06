@@ -24,6 +24,12 @@ class Home extends Component {
 		if (this.props.loginPassed) this.setState({ username: '', password: '' });
 	};
 
+	checkIfEnter = e => {
+		if (e.keyCode === 13) {
+			this.props.checkLogin({ ...this.state });
+		}
+	};
+
 	render() {
 		return (
 			<div className="Home">
@@ -49,6 +55,7 @@ class Home extends Component {
 								<input
 									className="InputFields__password"
 									onChange={this.inputHandler}
+									onKeyUp={this.checkIfEnter}
 									type="password"
 									name="password"
 									value={this.state.password}
