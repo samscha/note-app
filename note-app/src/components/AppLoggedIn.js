@@ -37,11 +37,9 @@ class AppLoggedIn extends Component {
           <p className="AppLoggedInHeader__title">Notes&reg;</p>
         </header>
 
-        <div
-          className="AppLoggedInMidStatusBar"
-          onClick={this.addNewNoteButtonClickedHandler}
-        >
+        <div className="AppLoggedInMidStatusBar">
           <AddNewNote
+            addNewNoteButtonClickedHandler={this.addNewNoteButtonClickedHandler}
             addNoteHandler={this.addNoteHandler}
             appIsAddingNote={this.state.isAddingNote}
           />
