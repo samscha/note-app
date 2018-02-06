@@ -5,15 +5,17 @@
 	flex-direction: row;
 	justify-content: flex-end;
 
-	.StatusBar__signOutButton--NavLink {
+	.StatusBar__signOutButton {
 		.button(@height: 20px);
 
 		width: 50px;
 
 		margin: 7px 7px 0 0;
-	}
 
-	.StatusBar__signOutButton {
 		font-size: 0.7rem;
+
+		&:hover {
+			cursor: pointer;
+		}
 	}
 }
