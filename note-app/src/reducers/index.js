@@ -17,8 +17,8 @@ const initialState = {
 	id: 5,
 	users: [
 		{
-			username: '',
-			password: '',
+			username: 'sam',
+			password: '1',
 		},
 	],
 	usersCurrentlyLoggedIn: [],

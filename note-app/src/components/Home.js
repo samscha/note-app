@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect, NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
-import { checkLogin } from '../actions';
+import { checkLogin, resetError } from '../actions';
 
 import '../styles/css/index.css';
 
@@ -17,9 +17,11 @@ class Home extends Component {
 	};
 
 	checkLoginHandler = _ => {
+		if (this.props.error !== '') this.props.resetError();
+
 		this.props.checkLogin({ ...this.state });
 
-		if (this.props.error !== '') this.setState({ username: '', password: '' });
+		if (this.props.loginPassed) this.setState({ username: '', password: '' });
 	};
 
 	render() {
@@ -77,4 +79,4 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps, { checkLogin })(Home);
+export default connect(mapStateToProps, { checkLogin, resetError })(Home);
