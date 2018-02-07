@@ -31,6 +31,7 @@ class NoteText extends Component {
 					type="text"
 					value={this.state.text}
 					onBlur={this.checkIfTextChanged}
+					rows={5}
 				/>
 			</div>
 		);

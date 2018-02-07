@@ -7,10 +7,42 @@
 	justify-content: center;
 	align-items: flex-start;
 
-	.NoteContainer {
+	.NotesNoteContainer {
 		width: 29%;
-		min-width: 200px;
+		min-width: 250px;
 
-		margin: 24px 24px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		.NoteStatusBar {
+			width: 100%;
+			height: 20px;
+
+			padding: 0 24px;
+
+			.NoteDeleteButton {
+				.button(@height: 18px);
+				width: 18px;
+
+				padding: 4px;
+
+				font-size: 0.9rem;
+			}
+		}
+
+		.NoteContainer {
+			margin: 24px;
+			margin-top: 0;
+		}
+	}
+
+	.NotesReturnButton {
+		.button();
+
+		&:hover {
+			cursor: pointer;
+		}
 	}
 }

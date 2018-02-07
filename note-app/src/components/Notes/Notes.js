@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { deleteNote } from '../../actions';
 
 import Note from './Note';
 
@@ -16,15 +18,19 @@ class Notes extends Component {
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.notes.length !== this.props.notes)
-			this.setState({ notes: nextProps.notes });
+			this.setState({ notes: nextProps.notes, displayNotes: nextProps.notes });
 	}
 
 	detailedNoteView = note => {
 		this.setState({ displayNotes: [note] });
 	};
 
-	ReturnToAllNotes = _ => {
+	returnToAllNotes = _ => {
 		this.setState({ displayNotes: [...this.state.notes] });
+	};
+
+	deleteNoteButtonClickedHandler = noteId => {
+		this.props.deleteNote(noteId);
 	};
 
 	render() {
@@ -32,19 +38,29 @@ class Notes extends Component {
 			<div className="Notes">
 				{this.state.displayNotes.map(note => {
 					return (
-						<div
-							key={note.id}
-							className="NoteContainer"
-							onClick={_ => this.detailedNoteView(note)}
-						>
-							<Note note={note} />
+						<div key={note.id} className="NotesNoteContainer">
+							<div className="NoteStatusBar">
+								<div
+									className="NoteDeleteButton"
+									onClick={_ => this.deleteNoteButtonClickedHandler(note.id)}
+								>
+									&#x2715;
+								</div>
+							</div>
+
+							<div
+								className="NoteContainer"
+								onClick={_ => this.detailedNoteView(note)}
+							>
+								<Note note={note} />
+							</div>
 						</div>
 					);
 				})}
 
 				{this.state.displayNotes.length > 1 ? null : (
-					<div className="NotesReturnButton" onClick={this.ReturnToAllNotes}>
-						return
+					<div className="NotesReturnButton" onClick={this.returnToAllNotes}>
+						go back
 					</div>
 				)}
 			</div>
@@ -52,4 +68,10 @@ class Notes extends Component {
 	}
 }
 
-export default Notes;
+const mapStateToProps = state => {
+	return {
+		//
+	};
+};
+
+export default connect(mapStateToProps, { deleteNote })(Notes);
