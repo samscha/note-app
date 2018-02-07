@@ -10,6 +10,7 @@ class Notes extends Component {
 	state = {
 		notes: [],
 		displayNotes: [],
+		isViewingSingleNote: false,
 	};
 
 	componentDidMount() {
@@ -22,11 +23,14 @@ class Notes extends Component {
 	}
 
 	detailedNoteView = note => {
-		this.setState({ displayNotes: [note] });
+		this.setState({ displayNotes: [note], isViewingSingleNote: true });
 	};
 
 	returnToAllNotes = _ => {
-		this.setState({ displayNotes: [...this.state.notes] });
+		this.setState({
+			displayNotes: [...this.state.notes],
+			isViewingSingleNote: false,
+		});
 	};
 
 	deleteNoteButtonClickedHandler = noteId => {
@@ -58,11 +62,11 @@ class Notes extends Component {
 					);
 				})}
 
-				{this.state.displayNotes.length > 1 ? null : (
+				{this.state.isViewingSingleNote ? (
 					<div className="NotesReturnButton" onClick={this.returnToAllNotes}>
 						go back
 					</div>
-				)}
+				) : null}
 			</div>
 		);
 	}

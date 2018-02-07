@@ -42,13 +42,6 @@ class Note extends Component {
 	render() {
 		return (
 			<div className="Note">
-				<div
-					className="DeleteNoteButton"
-					onClick={this.deleteNoteButtonClickedHandler}
-				>
-					&#x2715;
-				</div>
-
 				<NoteTitle
 					title={this.props.note.title}
 					editTitleHandler={this.editTitle}
