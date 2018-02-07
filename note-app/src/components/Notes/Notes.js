@@ -34,6 +34,7 @@ class Notes extends Component {
 	};
 
 	deleteNoteButtonClickedHandler = noteId => {
+		this.setState({ isViewingSingleNote: false });
 		this.props.deleteNote(noteId);
 	};
 
