@@ -16,7 +16,7 @@ export const checkLogin = credentials => {
 		setTimeout(_ => {
 			dispatch({ type: CHECK_LOGIN, payload: credentials });
 			dispatch({ type: CHECK_LOGIN_FINISH });
-		}, 1500);
+		}, 500);
 	};
 };
 

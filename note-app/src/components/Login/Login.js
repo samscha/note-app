@@ -26,7 +26,7 @@ class Login extends Component {
 
 	checkIfEnter = e => {
 		if (e.keyCode === 13) {
-			this.props.checkLogin({ ...this.state });
+			this.checkLoginHandler();
 		}
 	};
 

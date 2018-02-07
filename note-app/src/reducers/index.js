@@ -64,6 +64,20 @@ const rootReducer = (state = initialState, action) => {
 			};
 
 		case actionType.CHECK_LOGIN:
+			if (action.payload.username === '')
+				return {
+					...state,
+					isLoggedIn: false,
+					error: 'Please enter a username.',
+				};
+
+			if (action.payload.password === '')
+				return {
+					...state,
+					isLoggedIn: false,
+					error: 'Please enter a password.',
+				};
+
 			let error = '';
 			let isLoggedIn = false;
 			let addUserToLoggedIn = null;
