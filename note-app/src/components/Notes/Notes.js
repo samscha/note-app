@@ -1,23 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Note from './Note';
 
 import '../../styles/css/index.css';
 
-const Notes = props => {
-	const notes = props.notes;
+class Notes extends Component {
+	state = {
+		notes: [],
+	};
 
-	return (
-		<div className="Notes">
-			{notes.map(note => {
-				return (
-					<div key={note.id} className="NoteContainer">
-						<Note note={note} />
-					</div>
-				);
-			})}
-		</div>
-	);
-};
+	componentDidMount() {
+		this.setState({ notes: this.props.notes });
+	}
+
+	render() {
+		return (
+			<div className="Notes">
+				{this.state.notes.map(note => {
+					return (
+						<div key={note.id} className="NoteContainer">
+							<Note note={note} />
+						</div>
+					);
+				})}
+			</div>
+		);
+	}
+}
 
 export default Notes;
