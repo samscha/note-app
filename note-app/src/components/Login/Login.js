@@ -53,6 +53,7 @@ class Login extends Component {
 									name="username"
 									value={this.state.username}
 									placeholder="username"
+									disabled={this.props.isAuthenticating}
 								/>
 
 								<input
@@ -63,14 +64,27 @@ class Login extends Component {
 									name="password"
 									value={this.state.password}
 									placeholder="password"
+									disabled={this.props.isAuthenticating}
 								/>
 							</div>
 
 							<div
 								className="LoginLoginButton__button"
-								onClick={this.checkLoginHandler}
+								onClick={
+									this.props.isAuthenticating ? null : this.checkLoginHandler
+								}
+								style={
+									this.props.isAuthenticating
+										? {
+												background: 'white',
+												color: 'black',
+												opacity: '0.2',
+												fontSize: '0.7rem',
+											}
+										: null
+								}
 							>
-								Login
+								{this.props.isAuthenticating ? 'Authenticating..' : 'Login'}
 							</div>
 						</form>
 					</div>
