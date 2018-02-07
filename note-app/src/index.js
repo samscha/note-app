@@ -11,8 +11,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import rootReducer from './reducers';
 
-import Home from './components/Home';
-import App from './components/App';
+import Home from './components/Login/Home';
+import App from './components/App/App';
 
 import './styles/css/index.css';
 

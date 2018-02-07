@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import { checkLogin, resetError } from '../actions';
+import { checkLogin, resetError } from '../../actions';
 
-import '../styles/css/index.css';
+import '../../styles/css/index.css';
 
 class Home extends Component {
 	state = {

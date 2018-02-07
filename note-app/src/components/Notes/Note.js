@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { editNote, deleteNote } from '../actions';
+import { editNote, deleteNote } from '../../actions';
 
 import NoteTitle from './NoteTitle';
 import NoteText from './NoteText';
 
-import '../styles/css/index.css';
+import '../../styles/css/index.css';
 
 class Note extends Component {
 	state = {

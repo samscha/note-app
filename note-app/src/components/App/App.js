@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { resetError, signOut } from '../actions';
+import { resetError, signOut } from '../../actions';
 import { Redirect } from 'react-router-dom';
 
 import StatusBar from './StatusBar';
@@ -9,7 +9,7 @@ import AppLoggedIn from './AppLoggedIn';
 
 // import logo from '../assets/logo.svg';
 
-import '../styles/css/index.css';
+import '../../styles/css/index.css';
 
 class App extends Component {
   state = {

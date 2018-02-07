@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TextareaAutosize from 'react-autosize-textarea';
 
-import '../styles/css/index.css';
+import '../../styles/css/index.css';
 
 class NoteText extends Component {
 	state = {

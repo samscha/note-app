@@ -2,7 +2,7 @@ import React from 'react';
 
 import Note from './Note';
 
-import '../styles/css/index.css';
+import '../../styles/css/index.css';
 
 const Notes = props => {
 	const notes = props.notes;

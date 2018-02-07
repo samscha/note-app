@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import '../styles/css/index.css';
+import '../../styles/css/index.css';
 
 const NotLoggedIn = _ => {
 	return (

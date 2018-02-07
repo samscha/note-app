@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addNote } from '../actions';
+import { addNote } from '../../actions';
 
 import AddNewNote from './AddNewNote';
-import Notes from './Notes';
+import Notes from '../Notes//Notes';
 
-import '../styles/css/index.css';
+import '../../styles/css/index.css';
 
 class AppLoggedIn extends Component {
   state = {
