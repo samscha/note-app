@@ -18,7 +18,7 @@ const initialState = {
 	users: [
 		{
 			username: 'sam',
-			password: '1',
+			password: '1234password',
 		},
 	],
 	usersCurrentlyLoggedIn: [],
@@ -90,6 +90,18 @@ const rootReducer = (state = initialState, action) => {
 					error = 'Wrong password. Please try again';
 				} else {
 					isLoggedIn = true;
+
+					// ******************************************
+					// ** DO NOT STORE PASSWORDS AS PLAIN TEXT **
+					// ******************************************
+					localStorage.setItem(
+						'notes-app-id-1941293123912',
+						JSON.stringify(action.payload),
+					);
+					// ******************************************
+					// ** DO NOT STORE PASSWORDS AS PLAIN TEXT **
+					// ******************************************
+
 					addUserToLoggedIn = userExists[0].username;
 				}
 			} else error = 'Username not found. Please try again';

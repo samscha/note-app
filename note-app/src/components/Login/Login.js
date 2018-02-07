@@ -12,6 +12,22 @@ class Login extends Component {
 		password: '',
 	};
 
+	componentWillMount() {
+		this.checkLocalStorage();
+	}
+
+	checkLocalStorage = _ => {
+		if (Object.keys(localStorage).includes('notes-app-id-1941293123912')) {
+			this.setState({
+				username: JSON.parse(localStorage.getItem('notes-app-id-1941293123912'))
+					.username,
+			});
+			this.props.checkLogin(
+				JSON.parse(localStorage.getItem('notes-app-id-1941293123912')),
+			);
+		}
+	};
+
 	inputHandler = e => {
 		this.setState({ [e.target.name]: e.target.value });
 	};
