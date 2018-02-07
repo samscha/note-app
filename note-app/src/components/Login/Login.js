@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import { checkLogin, resetError } from '../../actions';
 
 import '../../styles/css/index.css';
 
-class Home extends Component {
+class Login extends Component {
 	state = {
 		username: '',
 		password: '',
 	};
+
+	componentWillReceiveProps(nextProps) {
+		console.log('props rec', nextProps);
+		if (nextProps.isAuthenticating !== this.props.isAuthenticating)
+			console.log('authc hanged');
+	}
 
 	inputHandler = e => {
 		this.setState({ [e.target.name]: e.target.value });
@@ -31,17 +37,20 @@ class Home extends Component {
 	};
 
 	render() {
+		console.log('checkauth', this.props.isAuthenticating);
 		return (
-			<div className="Home">
-				<div className="HomeTitle">Notes&reg;</div>
+			<div className="Login">
+				<div className="LoginTitle">Notes&reg;</div>
 
 				{!this.props.isLoggedIn ? (
-					<div className="HomeNotLoggedIn">
-						<div className="HomeDescription">
-							{this.props.error === '' ? 'Please log in' : this.props.error}
+					<div className="LoginNotLoggedIn">
+						<div className="LoginDescription">
+							{this.props.isAuthenticating
+								? 'Authenticating..'
+								: this.props.error === '' ? 'Please log in' : this.props.error}
 						</div>
 
-						<form className="HomeLogin">
+						<form className="LoginLogin">
 							<div className="InputFields">
 								<input
 									className="InputFields__username"
@@ -64,13 +73,12 @@ class Home extends Component {
 								/>
 							</div>
 
-							<NavLink
-								to="/login/auth"
-								className="HomeLoginButton__NavLink"
+							<div
+								className="LoginLoginButton__button"
 								onClick={this.checkLoginHandler}
 							>
-								<div className="HomeLoginButton__button">Login</div>
-							</NavLink>
+								Login
+							</div>
 						</form>
 					</div>
 				) : (
@@ -83,9 +91,13 @@ class Home extends Component {
 
 const mapStateToProps = state => {
 	return {
+		isAuthenticating: state.isAuthenticating,
 		isLoggedIn: state.isLoggedIn,
 		error: state.error,
 	};
 };
 
-export default connect(mapStateToProps, { checkLogin, resetError })(Home);
+export default connect(mapStateToProps, {
+	checkLogin,
+	resetError,
+})(Login);

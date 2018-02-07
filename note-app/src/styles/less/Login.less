@@ -1,6 +1,6 @@
 @bottom-height: 120px;
 
-.Home {
+.Login {
 	height: 100vh;
 
 	display: flex;
@@ -8,26 +8,26 @@
 	justify-content: center;
 	align-items: center;
 
-	.HomeTitle {
+	.LoginTitle {
 		margin-bottom: 7px;
 
 		font-size: 5rem;
 	}
 
-	.HomeNotLoggedIn {
+	.LoginNotLoggedIn {
 		height: @bottom-height;
 
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 
-		.HomeDescription {
+		.LoginDescription {
 			margin-bottom: 24px;
 
 			font-size: 1.2rem;
 		}
 
-		.HomeLogin {
+		.LoginLogin {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -42,7 +42,7 @@
 				}
 			}
 
-			.HomeLoginButton__NavLink {
+			.LoginLoginButton__button {
 				.button(@height: 20px);
 
 				font-size: 0.7rem;
@@ -52,7 +52,7 @@
 		}
 	}
 
-	.HomeToApp {
+	.LoginToApp {
 		.button();
 		height: @bottom-height;
 

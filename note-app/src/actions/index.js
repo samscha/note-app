@@ -2,6 +2,7 @@
 
 export const CHECK_LOGIN_START = 'CHECK_LOGIN_START';
 export const CHECK_LOGIN = 'CHECK_LOGIN';
+export const CHECK_LOGIN_FINISH = 'CHECK_LOGIN_FINISH';
 export const RESET_ERROR = 'RESET_ERROR';
 export const SIGN_OUT = 'SIGN_OUT';
 export const NOTES_FETCHING = 'NOTES_FETCHING';
@@ -14,7 +15,8 @@ export const checkLogin = credentials => {
 		dispatch({ type: CHECK_LOGIN_START });
 		setTimeout(_ => {
 			dispatch({ type: CHECK_LOGIN, payload: credentials });
-		}, 500);
+			dispatch({ type: CHECK_LOGIN_FINISH });
+		}, 1500);
 	};
 };
 

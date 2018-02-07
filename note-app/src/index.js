@@ -12,8 +12,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import rootReducer from './reducers';
 
 import Root from './Root';
-import Home from './components/Login/Home';
-import Auth from './components/Login/Auth';
+import Login from './components/Login/Login';
 import App from './components/App/App';
 
 import './styles/css/index.css';
@@ -26,8 +25,7 @@ ReactDOM.render(
 			<div>
 				<Switch>
 					<Route path="/notes/:username" component={App} />
-					<Route path="/login/auth" component={Auth} />
-					<Route path="/login" component={Home} />
+					<Route path="/login" component={Login} />
 					<Route exact path="/" component={Root} />
 				</Switch>
 			</div>
