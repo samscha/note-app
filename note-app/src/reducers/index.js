@@ -68,14 +68,14 @@ const rootReducer = (state = initialState, action) => {
 				return {
 					...state,
 					isLoggedIn: false,
-					error: 'Please enter a username.',
+					error: 'Please enter a username',
 				};
 
 			if (action.payload.password === '')
 				return {
 					...state,
 					isLoggedIn: false,
-					error: 'Please enter a password.',
+					error: 'Please enter a password',
 				};
 
 			let error = '';
