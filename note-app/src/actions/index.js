@@ -1,5 +1,6 @@
 // import axios from 'axios';
 
+export const CHECK_LOGIN_START = 'CHECK_LOGIN_START';
 export const CHECK_LOGIN = 'CHECK_LOGIN';
 export const RESET_ERROR = 'RESET_ERROR';
 export const SIGN_OUT = 'SIGN_OUT';
@@ -9,9 +10,11 @@ export const EDIT_NOTE = 'EDIT_NOTE';
 export const DELETE_NOTE = 'DELETE_NOTE';
 
 export const checkLogin = credentials => {
-	return {
-		type: CHECK_LOGIN,
-		payload: credentials,
+	return dispatch => {
+		dispatch({ type: CHECK_LOGIN_START });
+		setTimeout(_ => {
+			dispatch({ type: CHECK_LOGIN, payload: credentials });
+		}, 500);
 	};
 };
 

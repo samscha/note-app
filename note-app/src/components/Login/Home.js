@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 import { checkLogin, resetError } from '../../actions';
 
@@ -64,16 +64,17 @@ class Home extends Component {
 								/>
 							</div>
 
-							<div
-								className="HomeLoginButton__button"
+							<NavLink
+								to="/login/auth"
+								className="HomeLoginButton__NavLink"
 								onClick={this.checkLoginHandler}
 							>
-								Login
-							</div>
+								<div className="HomeLoginButton__button">Login</div>
+							</NavLink>
 						</form>
 					</div>
 				) : (
-					<Redirect to={`/app/${this.state.username}`} />
+					<Redirect to={`/notes/${this.state.username}`} />
 				)}
 			</div>
 		);

@@ -23,6 +23,7 @@ const initialState = {
 	],
 	usersCurrentlyLoggedIn: [],
 	isLoggedIn: false,
+	isLoggingIn: false,
 	notes: [
 		{
 			id: 0,
@@ -56,6 +57,12 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case actionType.CHECK_LOGIN_START:
+			return {
+				...state,
+				isLoggingIn: true,
+			};
+
 		case actionType.CHECK_LOGIN:
 			let error = '';
 			let isLoggedIn = false;
@@ -81,12 +88,14 @@ const rootReducer = (state = initialState, action) => {
 						addUserToLoggedIn,
 					],
 					isLoggedIn: isLoggedIn,
+					isLoggingIn: false,
 					error: error,
 				};
 			else
 				return {
 					...state,
 					isLoggedIn: isLoggedIn,
+					isLoggingIn: false,
 					error: error,
 				};
 
