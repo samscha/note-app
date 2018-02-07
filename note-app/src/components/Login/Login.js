@@ -18,6 +18,9 @@ class Login extends Component {
 
 	checkLocalStorage = _ => {
 		if (Object.keys(localStorage).includes('notes-app-id-1941293123912')) {
+			// window.alert(
+			// 	'You are already logged in. To log out, click sign out after login.',
+			// );
 			this.setState({
 				username: JSON.parse(localStorage.getItem('notes-app-id-1941293123912'))
 					.username,
