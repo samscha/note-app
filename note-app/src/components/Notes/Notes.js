@@ -10,6 +10,7 @@ class Notes extends Component {
 	state = {
 		notes: [],
 		displayNotes: [],
+		isEditingAllNotes: false,
 		isViewingSingleNote: false,
 	};
 
@@ -23,7 +24,7 @@ class Notes extends Component {
 	}
 
 	detailedNoteView = note => {
-		this.setState({ displayNotes: [note], isViewingSingleNote: true });
+		// this.setState({ displayNotes: [note], isViewingSingleNote: true });
 	};
 
 	returnToAllNotes = _ => {
@@ -45,18 +46,28 @@ class Notes extends Component {
 					return (
 						<div key={note.id} className="NotesNoteContainer">
 							<div className="NoteStatusBar">
-								<div
-									className="NoteDeleteButton"
-									onClick={_ => this.deleteNoteButtonClickedHandler(note.id)}
-								>
-									&#x2715;
-								</div>
+								{this.state.isViewingSingleNote ? null : (
+									<div
+										className="NoteDeleteButton"
+										onClick={_ => this.deleteNoteButtonClickedHandler(note.id)}
+									>
+										&#x2715;
+									</div>
+								)}
+
+								{this.state.isViewingSingleNote ? null : (
+									<div
+										className="NoteEditSingleButton"
+										onClick={_ => this.detailedNoteView(note)}
+									>
+										<span role="img" aria-label="magnifying-glass">
+											&#x1f50d;
+										</span>
+									</div>
+								)}
 							</div>
 
-							<div
-								className="NoteContainer"
-								onClick={_ => this.detailedNoteView(note)}
-							>
+							<div className="NoteContainer">
 								<Note note={note} />
 							</div>
 						</div>
