@@ -12,12 +12,6 @@ class Login extends Component {
 		password: '',
 	};
 
-	componentWillReceiveProps(nextProps) {
-		console.log('props rec', nextProps);
-		if (nextProps.isAuthenticating !== this.props.isAuthenticating)
-			console.log('authc hanged');
-	}
-
 	inputHandler = e => {
 		this.setState({ [e.target.name]: e.target.value });
 	};
@@ -37,7 +31,6 @@ class Login extends Component {
 	};
 
 	render() {
-		console.log('checkauth', this.props.isAuthenticating);
 		return (
 			<div className="Login">
 				<div className="LoginTitle">Notes&reg;</div>
