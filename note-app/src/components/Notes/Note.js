@@ -24,19 +24,26 @@ class Note extends Component {
 	}
 
 	editTitle = editedTitle => {
-		this.props.editNote({ ...this.state, title: editedTitle });
+		if (!this.props.isViewingSingleNote)
+			this.props.editNote({ ...this.state, title: editedTitle });
 
 		this.setState({ title: editedTitle });
 	};
 
 	editText = editedText => {
-		this.props.editNote({ ...this.state, text: editedText });
+		if (!this.props.isViewingSingleNote)
+			this.props.editNote({ ...this.state, text: editedText });
 
 		this.setState({ text: editedText });
 	};
 
 	deleteNoteButtonClickedHandler = _ => {
 		this.props.deleteNote(this.state.id);
+	};
+
+	confirmEditButtonClickedHandler = _ => {
+		this.props.editNote({ ...this.state });
+		this.props.returnToAllNotes();
 	};
 
 	render() {
@@ -46,7 +53,17 @@ class Note extends Component {
 					title={this.props.note.title}
 					editTitleHandler={this.editTitle}
 				/>
+
 				<NoteText text={this.props.note.text} editTextHandler={this.editText} />
+
+				{this.props.isViewingSingleNote ? (
+					<div
+						className="NoteEditConfirmButton"
+						onClick={this.confirmEditButtonClickedHandler}
+					>
+						confirm edit
+					</div>
+				) : null}
 			</div>
 		);
 	}

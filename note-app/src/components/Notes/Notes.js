@@ -24,7 +24,7 @@ class Notes extends Component {
 	}
 
 	detailedNoteView = note => {
-		// this.setState({ displayNotes: [note], isViewingSingleNote: true });
+		this.setState({ displayNotes: [note], isViewingSingleNote: true });
 	};
 
 	returnToAllNotes = _ => {
@@ -68,17 +68,15 @@ class Notes extends Component {
 							</div>
 
 							<div className="NoteContainer">
-								<Note note={note} />
+								<Note
+									note={note}
+									isViewingSingleNote={this.state.isViewingSingleNote}
+									returnToAllNotes={this.returnToAllNotes}
+								/>
 							</div>
 						</div>
 					);
 				})}
-
-				{this.state.isViewingSingleNote ? (
-					<div className="NotesReturnButton" onClick={this.returnToAllNotes}>
-						go back
-					</div>
-				) : null}
 			</div>
 		);
 	}
