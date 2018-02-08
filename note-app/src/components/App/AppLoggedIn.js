@@ -11,12 +11,31 @@ import '../../styles/css/index.css';
 class AppLoggedIn extends Component {
   state = {
     isAddingNote: false,
+    notes: [],
+    displayedNotes: [],
   };
+
+  componentDidMount() {
+    this.setState({
+      notes: this.props.notes,
+      displayedNotes: this.props.notes,
+    });
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.notes.length === this.props.notes.length + 1)
-      this.noteAddedSuccessfully();
+      this.noteAddedSuccessfully(nextProps);
+
+    if (nextProps.notes.length === this.props.notes.length - 1)
+      this.updateNotesList(nextProps);
   }
+
+  updateNotesList = nextProps => {
+    this.setState({
+      notes: nextProps.notes,
+      displayedNotes: nextProps.notes,
+    });
+  };
 
   cancelAddNewButtonClicked = _ => {
     this.setState({ isAddingNote: false });
@@ -30,8 +49,12 @@ class AppLoggedIn extends Component {
     this.props.addNote(note);
   };
 
-  noteAddedSuccessfully = _ => {
-    this.setState({ isAddingNote: false });
+  noteAddedSuccessfully = nextProps => {
+    this.setState({
+      notes: nextProps.notes,
+      displayedNotes: nextProps.notes,
+      isAddingNote: false,
+    });
   };
 
   render() {
@@ -50,10 +73,10 @@ class AppLoggedIn extends Component {
           />
         </div>
 
-        {this.props.notes.length > 0 ||
-        (this.props.notes.length === 0 && this.state.isAddingNote) ? (
+        {this.state.displayedNotes.length > 0 ||
+        (this.state.displayedNotes.length === 0 && this.state.isAddingNote) ? (
           this.state.isAddingNote ? null : (
-            <Notes notes={this.props.notes} />
+            <Notes notes={this.state.notes} />
           )
         ) : (
           <div className="AppLoggedInNoNotesInState">No notes. Add some!</div>
