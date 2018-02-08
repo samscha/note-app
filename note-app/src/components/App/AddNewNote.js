@@ -26,17 +26,6 @@ class AddNewNote extends Component {
 	render() {
 		return (
 			<div className="AddNewNote">
-				<div
-					className="NotAddingNewNote"
-					onClick={
-						!this.props.appIsAddingNote
-							? this.props.addNewNoteButtonClickedHandler
-							: this.props.cancelAddNewNoteClickHandler
-					}
-				>
-					{!this.props.appIsAddingNote ? '+' : '-'}
-				</div>
-
 				{!this.props.appIsAddingNote ? null : (
 					<div className="IsAddingNewNote">
 						<form className="NewNote">

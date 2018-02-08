@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addNote } from '../../actions';
 
 import AddNewNote from './AddNewNote';
+import SearchBar from './SearchBar';
 import Notes from '../Notes//Notes';
 
 import '../../styles/css/index.css';
@@ -12,13 +13,12 @@ class AppLoggedIn extends Component {
   state = {
     isAddingNote: false,
     notes: [],
-    displayedNotes: [],
+    searchQuery: '',
   };
 
   componentDidMount() {
     this.setState({
       notes: this.props.notes,
-      displayedNotes: this.props.notes,
     });
   }
 
@@ -33,7 +33,6 @@ class AppLoggedIn extends Component {
   updateNotesList = nextProps => {
     this.setState({
       notes: nextProps.notes,
-      displayedNotes: nextProps.notes,
     });
   };
 
@@ -42,7 +41,7 @@ class AppLoggedIn extends Component {
   };
 
   addNewNoteButtonClickedHandler = _ => {
-    this.setState({ isAddingNote: true });
+    this.setState({ isAddingNote: !this.state.isAddingNote });
   };
 
   addNoteHandler = note => {
@@ -52,9 +51,18 @@ class AppLoggedIn extends Component {
   noteAddedSuccessfully = nextProps => {
     this.setState({
       notes: nextProps.notes,
-      displayedNotes: nextProps.notes,
       isAddingNote: false,
     });
+  };
+
+  updateSearchQuery = e => {
+    if (!this.state.isAddingNote)
+      this.setState({ searchQuery: e.target.value });
+  };
+
+  resetQuery = _ => {
+    // this.setState({ searchQuery: '' });
+    // implement state in search bar to do this
   };
 
   render() {
@@ -65,18 +73,39 @@ class AppLoggedIn extends Component {
         </header>
 
         <div className="AppLoggedInMidStatusBar">
+          <div
+            className="AppLoggedInMidStatusBar__addNewNoteButton"
+            onClick={this.addNewNoteButtonClickedHandler}
+          >
+            {this.state.isAddingNote ? '-' : '+'}
+          </div>
+
+          <div className="AppLoggedInMiddleItems">
+            <SearchBar
+              updateSearchQuery={this.updateSearchQuery.bind(this)}
+              resetQuery={this.resetQuery}
+            />
+          </div>
+
+          <div className="AppLoggedInMidStatusBar__rightItem"> &#x2715;</div>
+        </div>
+
+        {this.state.isAddingNote ? (
           <AddNewNote
             cancelAddNewNoteClickHandler={this.cancelAddNewButtonClicked}
             addNewNoteButtonClickedHandler={this.addNewNoteButtonClickedHandler}
             addNoteHandler={this.addNoteHandler}
             appIsAddingNote={this.state.isAddingNote}
           />
-        </div>
+        ) : null}
 
-        {this.state.displayedNotes.length > 0 ||
-        (this.state.displayedNotes.length === 0 && this.state.isAddingNote) ? (
+        {this.state.notes.length > 0 ||
+        (this.state.notes.length === 0 && this.state.isAddingNote) ? (
           this.state.isAddingNote ? null : (
-            <Notes notes={this.state.notes} />
+            <Notes
+              notes={this.state.notes}
+              searchQuery={this.state.searchQuery}
+            />
           )
         ) : (
           <div className="AppLoggedInNoNotesInState">No notes. Add some!</div>

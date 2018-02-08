@@ -42,41 +42,49 @@ class Notes extends Component {
 	render() {
 		return (
 			<div className="Notes">
-				{this.state.displayNotes.map(note => {
-					return (
-						<div key={note.id} className="NotesNoteContainer">
-							<div className="NoteStatusBar">
-								{this.state.isViewingSingleNote ? null : (
-									<div
-										className="NoteDeleteButton"
-										onClick={_ => this.deleteNoteButtonClickedHandler(note.id)}
-									>
-										&#x2715;
-									</div>
-								)}
+				{this.state.displayNotes
+					.filter(
+						note =>
+							note.title.includes(this.props.searchQuery) ||
+							note.text.includes(this.props.searchQuery),
+					)
+					.map(note => {
+						return (
+							<div key={note.id} className="NotesNoteContainer">
+								<div className="NoteStatusBar">
+									{this.state.isViewingSingleNote ? null : (
+										<div
+											className="NoteDeleteButton"
+											onClick={_ =>
+												this.deleteNoteButtonClickedHandler(note.id)
+											}
+										>
+											&#x2715;
+										</div>
+									)}
 
-								{this.state.isViewingSingleNote ? null : (
-									<div
-										className="NoteEditSingleButton"
-										onClick={_ => this.detailedNoteView(note)}
-									>
-										<span role="img" aria-label="magnifying-glass">
-											&#x1f50d;
-										</span>
-									</div>
-								)}
-							</div>
+									{this.state.isViewingSingleNote ? null : (
+										<div
+											className="NoteEditSingleButton"
+											onClick={_ => this.detailedNoteView(note)}
+										>
+											<span role="img" aria-label="magnifying-glass">
+												&#x1f50d;
+											</span>
+										</div>
+									)}
+								</div>
 
-							<div className="NoteContainer">
-								<Note
-									note={note}
-									isViewingSingleNote={this.state.isViewingSingleNote}
-									returnToAllNotes={this.returnToAllNotes}
-								/>
+								<div className="NoteContainer">
+									<Note
+										note={note}
+										isViewingSingleNote={this.state.isViewingSingleNote}
+										returnToAllNotes={this.returnToAllNotes}
+									/>
+								</div>
 							</div>
-						</div>
-					);
-				})}
+						);
+					})}
 			</div>
 		);
 	}
