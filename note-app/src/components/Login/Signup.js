@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-import { signUpUser } from '../../actions';
+import { checkSignUp, signUpUser } from '../../actions';
 
 import '../../styles/css/index.css';
 
@@ -15,17 +16,15 @@ class Signup extends Component {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
-	checkLoginHandler = _ => {
+	checkSignUpHandler = _ => {
 		if (this.props.error !== '') this.props.resetError();
 
-		this.props.checkLogin({ ...this.state });
-
-		if (this.props.loginPassed) this.setState({ username: '', password: '' });
+		this.props.checkSignUp({ ...this.state });
 	};
 
 	checkIfEnter = e => {
 		if (e.keyCode === 13) {
-			this.checkLoginHandler();
+			this.checkSignUpHandler();
 		}
 	};
 
@@ -38,52 +37,62 @@ class Signup extends Component {
 			<div className="Signup">
 				<div className="Signup__title">Notes&reg;</div>
 
-				<div className="Signup__form">
-					<div className="SignupDescription">Sign up your account</div>
-
-					<form className="SignupForm">
-						<div className="InputFields">
-							<input
-								className="InputFields__username"
-								onChange={this.inputHandler}
-								onKeyUp={this.checkIfEnter}
-								type="text"
-								name="username"
-								value={this.state.username}
-								placeholder="username"
-								disabled={this.props.isSigningUp}
-							/>
-
-							<input
-								className="InputFields__password"
-								onChange={this.inputHandler}
-								onKeyUp={this.checkIfEnter}
-								type="password"
-								name="password"
-								value={this.state.password}
-								placeholder="password"
-								disabled={this.props.isSigningUp}
-							/>
+				{!this.props.isLoggedIn ? (
+					<div className="Signup__form">
+						<div className="SignupDescription">
+							{this.props.isSigningUp
+								? 'Signing up..'
+								: this.props.error === ''
+									? 'Sign up for an account'
+									: this.props.error}
 						</div>
 
-						<div
-							className="SignupForm__button"
-							onClick={this.props.isSigningUp ? null : this.signUpHandler}
-							style={
-								this.props.isSigningUp
-									? {
-											background: 'white',
-											color: 'black',
-											opacity: '0.2',
-											fontSize: '0.7rem',
-										}
-									: null
-							}
-						>
-							{this.props.isSigningUp ? 'Signing up..' : 'Sign up'}
-						</div>
-					</form>
-				</div>
+						<form className="SignupForm">
+							<div className="InputFields">
+								<input
+									className="InputFields__username"
+									onChange={this.inputHandler}
+									onKeyUp={this.checkIfEnter}
+									type="text"
+									name="username"
+									value={this.state.username}
+									placeholder="username"
+									disabled={this.props.isSigningUp}
+								/>
+
+								<input
+									className="InputFields__password"
+									onChange={this.inputHandler}
+									onKeyUp={this.checkIfEnter}
+									type="password"
+									name="password"
+									value={this.state.password}
+									placeholder="password"
+									disabled={this.props.isSigningUp}
+								/>
+							</div>
+
+							<div
+								className="SignupForm__button"
+								onClick={this.props.isSigningUp ? null : this.signUpHandler}
+								style={
+									this.props.isSigningUp
+										? {
+												background: 'white',
+												color: 'black',
+												opacity: '0.2',
+												fontSize: '0.7rem',
+											}
+										: null
+								}
+							>
+								{this.props.isSigningUp ? 'Signing up..' : 'Sign up'}
+							</div>
+						</form>
+					</div>
+				) : (
+					<Redirect to={`/notes/${this.state.username}`} />
+				)}
 			</div>
 		);
 	}
@@ -92,7 +101,9 @@ class Signup extends Component {
 const mapStateToProps = state => {
 	return {
 		isSigningUp: state.isSigningUp,
+		isLoggedIn: state.isLoggedIn,
+		error: state.error,
 	};
 };
 
-export default connect(mapStateToProps, { signUpUser })(Signup);
+export default connect(mapStateToProps, { checkSignUp, signUpUser })(Signup);

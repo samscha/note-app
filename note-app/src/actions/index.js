@@ -10,6 +10,8 @@ export const CHECK_LOGIN = 'CHECK_LOGIN';
 export const CHECK_LOGIN_FINISH = 'CHECK_LOGIN_FINISH';
 // reset error
 export const RESET_ERROR = 'RESET_ERROR';
+// reset sign up
+export const RESET_SIGN_UP = 'RESET_SIGN_UP';
 // sign out
 export const SIGN_OUT = 'SIGN_OUT';
 // when backend is implemented
@@ -28,6 +30,16 @@ export const signUpUser = user => {
 	};
 };
 
+export const checkSignUp = newUser => {
+	return dispatch => {
+		dispatch({ type: SIGNUP_USER_START });
+		setTimeout(_ => {
+			dispatch({ type: SIGNUP_USER, payload: newUser });
+			dispatch({ type: SIGNUP_USER_FINISH });
+		}, 500);
+	};
+};
+
 export const checkLogin = credentials => {
 	return dispatch => {
 		dispatch({ type: CHECK_LOGIN_START });
@@ -41,6 +53,12 @@ export const checkLogin = credentials => {
 export const resetError = _ => {
 	return {
 		type: RESET_ERROR,
+	};
+};
+
+export const resetSignUp = _ => {
+	return {
+		type: RESET_SIGN_UP,
 	};
 };
 

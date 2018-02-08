@@ -28,6 +28,7 @@ ReactDOM.render(
 				<Switch>
 					<Route path="/notes/:username" component={App} />
 					<Route path="/signup" component={Signup} />
+					<Route path="/login/:username" component={Login} />
 					<Route path="/login" component={Login} />
 					<Route path="/home" component={Home} />
 					<Route exact path="/" component={Root} />

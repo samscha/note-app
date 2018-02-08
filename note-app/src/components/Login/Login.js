@@ -14,6 +14,7 @@ class Login extends Component {
 
 	componentWillMount() {
 		this.checkLocalStorage();
+		this.checkPropsForUsername();
 	}
 
 	checkLocalStorage = _ => {
@@ -28,6 +29,12 @@ class Login extends Component {
 		}
 	};
 
+	checkPropsForUsername = _ => {
+		if (this.props.match.params.username !== undefined) {
+			// this.props.checkLogin()
+		}
+	};
+
 	inputHandler = e => {
 		this.setState({ [e.target.name]: e.target.value });
 	};
@@ -37,7 +44,7 @@ class Login extends Component {
 
 		this.props.checkLogin({ ...this.state });
 
-		if (this.props.loginPassed) this.setState({ username: '', password: '' });
+		// if (this.props.loginPassed) this.setState({ username: '', password: '' });
 	};
 
 	checkIfEnter = e => {

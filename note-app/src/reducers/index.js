@@ -66,9 +66,24 @@ const rootReducer = (state = initialState, action) => {
 
 		case actionType.SIGNUP_USER:
 			// check if user exists (in database)
+			if (action.payload.username === '')
+				return {
+					...state,
+					isSigningUp: false,
+					error: 'Please enter a username',
+				};
+
+			if (action.payload.password === '')
+				return {
+					...state,
+					isSigningUp: false,
+					error: 'Please enter a password',
+				};
+
 			return {
 				...state,
 				users: [...state.users, action.payload],
+				isLoggedIn: true,
 			};
 
 		case actionType.SIGNUP_USER_FINISH:
