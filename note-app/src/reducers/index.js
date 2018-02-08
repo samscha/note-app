@@ -205,6 +205,12 @@ const rootReducer = (state = initialState, action) => {
 				notes: state.notes.filter(note => note.id !== action.payload),
 			};
 
+		case actionType.DELETE_NOTES_ALL:
+			return {
+				...state,
+				notes: [],
+			};
+
 		default:
 			return state;
 	}

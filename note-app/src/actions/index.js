@@ -19,6 +19,7 @@ export const NOTES_FETCHING = 'NOTES_FETCHING';
 export const ADD_NOTE = 'ADD_NOTE';
 export const EDIT_NOTE = 'EDIT_NOTE';
 export const DELETE_NOTE = 'DELETE_NOTE';
+export const DELETE_NOTES_ALL = 'DELETE_NOTES_ALL';
 
 export const signUpUser = user => {
 	return dispatch => {
@@ -87,5 +88,11 @@ export const deleteNote = noteId => {
 	return {
 		type: DELETE_NOTE,
 		payload: noteId,
+	};
+};
+
+export const deleteAllNotes = _ => {
+	return {
+		type: DELETE_NOTES_ALL,
 	};
 };

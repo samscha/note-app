@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addNote } from '../../actions';
+import { addNote, deleteAllNotes } from '../../actions';
 
 import AddNewNote from './AddNewNote';
 import SearchBar from './SearchBar';
@@ -27,6 +27,9 @@ class AppLoggedIn extends Component {
       this.noteAddedSuccessfully(nextProps);
 
     if (nextProps.notes.length === this.props.notes.length - 1)
+      this.updateNotesList(nextProps);
+
+    if (nextProps.notes.length !== this.props.notes.length)
       this.updateNotesList(nextProps);
   }
 
@@ -65,6 +68,10 @@ class AppLoggedIn extends Component {
     // implement state in search bar to do this
   };
 
+  deleteAllNotes = _ => {
+    this.props.deleteAllNotes();
+  };
+
   render() {
     return (
       <div className="AppLoggedIn">
@@ -87,7 +94,13 @@ class AppLoggedIn extends Component {
             />
           </div>
 
-          <div className="AppLoggedInMidStatusBar__rightItem"> &#x2715;</div>
+          <div
+            className="AppLoggedInMidStatusBar__rightItem"
+            onClick={this.deleteAllNotes}
+          >
+            {' '}
+            &#x2715;
+          </div>
         </div>
 
         {this.state.isAddingNote ? (
@@ -121,4 +134,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { addNote })(AppLoggedIn);
+export default connect(mapStateToProps, { addNote, deleteAllNotes })(
+  AppLoggedIn,
+);
