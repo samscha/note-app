@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 import { checkLogin, resetError } from '../../actions';
 
@@ -18,9 +18,6 @@ class Login extends Component {
 
 	checkLocalStorage = _ => {
 		if (Object.keys(localStorage).includes('notes-app-id-1941293123912')) {
-			// window.alert(
-			// 	'You are already logged in. To log out, click sign out after login.',
-			// );
 			this.setState({
 				username: JSON.parse(localStorage.getItem('notes-app-id-1941293123912'))
 					.username,
@@ -52,6 +49,10 @@ class Login extends Component {
 	render() {
 		return (
 			<div className="Login">
+				<NavLink to="/signup" className="LoginSignUpButton">
+					Sign up
+				</NavLink>
+
 				<div className="LoginTitle">Notes&reg;</div>
 
 				{!this.props.isLoggedIn ? (

@@ -13,6 +13,7 @@ import rootReducer from './reducers';
 
 import Root from './Root';
 import Home from './components/Home/Home';
+import Signup from './components/Login/Signup';
 import Login from './components/Login/Login';
 import App from './components/App/App';
 
@@ -26,6 +27,7 @@ ReactDOM.render(
 			<div>
 				<Switch>
 					<Route path="/notes/:username" component={App} />
+					<Route path="/signup" component={Signup} />
 					<Route path="/login" component={Login} />
 					<Route path="/home" component={Home} />
 					<Route exact path="/" component={Root} />

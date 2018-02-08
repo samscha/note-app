@@ -24,6 +24,7 @@ const initialState = {
 	usersCurrentlyLoggedIn: [],
 	isLoggedIn: false,
 	isAuthenticating: false,
+	isSigningUp: false,
 	notes: [
 		{
 			id: 0,
@@ -57,6 +58,25 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case actionType.SIGNUP_USER_START:
+			return {
+				...state,
+				isSigningUp: true,
+			};
+
+		case actionType.SIGNUP_USER:
+			// check if user exists (in database)
+			return {
+				...state,
+				users: [...state.users, action.payload],
+			};
+
+		case actionType.SIGNUP_USER_FINISH:
+			return {
+				...state,
+				isSigningUp: false,
+			};
+
 		case actionType.CHECK_LOGIN_START:
 			return {
 				...state,

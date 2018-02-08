@@ -1,6 +1,6 @@
-@bottom-height: 120px;
+@bott-height: 120px;
 
-.Login {
+.Signup {
 	height: 100vh;
 
 	display: flex;
@@ -8,41 +8,26 @@
 	justify-content: flex-start;
 	align-items: center;
 
-	.LoginSignUpButton {
-		.button(@height: 20px);
-
-		width: 150px;
-
-		margin-top: 14px;
-		margin-bottom: 35vh;
-
-		font-size: 0.7rem;
-
-		&:hover {
-			cursor: pointer;
-		}
-	}
-
-	.LoginTitle {
+	.Signup__title {
 		margin-bottom: 7px;
 
 		font-size: 5rem;
 	}
 
-	.LoginNotLoggedIn {
-		height: @bottom-height;
+	.Signup__form {
+		height: @bott-height;
 
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 
-		.LoginDescription {
+		.SignupDescription {
 			margin-bottom: 24px;
 
 			font-size: 1.2rem;
 		}
 
-		.LoginLogin {
+		.SignupForm {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -57,22 +42,17 @@
 				}
 			}
 
-			.LoginLoginButton__button {
+			.SignupForm__button {
 				.button(@height: 20px);
 
 				font-size: 0.7rem;
 
 				margin-top: 7px;
+
+				&:hover {
+					cursor: pointer;
+				}
 			}
-		}
-	}
-
-	.LoginToApp {
-		.button();
-		height: @bottom-height;
-
-		p {
-			font-size: 2.6rem;
 		}
 	}
 }
