@@ -46,6 +46,25 @@ class Note extends Component {
 		this.props.returnToAllNotes();
 	};
 
+	/*
+	cancelEditSingleNoteButtonClickHandler = _ => {
+		console.log(this.props.note);
+		console.log(this.state);
+
+		this.props.returnToAllNotes();
+	};
+
+
+				{this.props.isViewingSingleNote ? (
+					<div
+						className="SingleNoteViewButtons"
+						onClick={this.cancelEditSingleNoteButtonClickHandler}
+					>
+						cancel edit
+					</div>
+				) : null}
+				*/
+
 	render() {
 		return (
 			<div className="Note">
@@ -58,7 +77,7 @@ class Note extends Component {
 
 				{this.props.isViewingSingleNote ? (
 					<div
-						className="NoteEditConfirmButton"
+						className="SingleNoteViewButtons"
 						onClick={this.confirmEditButtonClickedHandler}
 					>
 						confirm edit
