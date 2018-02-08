@@ -17,7 +17,7 @@ const initialState = {
 	id: 5,
 	users: [
 		{
-			username: 'samlambdaschool',
+			username: 'samlambdas',
 			password: 'password',
 		},
 	],
