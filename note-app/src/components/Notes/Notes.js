@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteNote } from '../../actions';
+import { addNote, deleteNote } from '../../actions';
 
 import Note from './Note';
 
@@ -40,6 +40,10 @@ class Notes extends Component {
 		this.setState({ isViewingSingleNote: false });
 		this.props.disableStatusBarButtonsHandler();
 		this.props.deleteNote(noteId);
+	};
+
+	addSelf = note => {
+		// this.props.addNote(note);
 	};
 
 	render() {
@@ -89,6 +93,38 @@ class Notes extends Component {
 						);
 					})}
 
+				{this.props.searchQuery === '' ? (
+					<div className="NotesNoteContainer" style={{ display: 'none' }}>
+						<div className="NoteStatusBar">
+							{this.state.isViewingSingleNote ? null : (
+								<div
+									className="NoteDeleteButton"
+									onClick={_ => this.deleteNoteButtonClickedHandler(-1)}
+									style={{ display: 'none' }}
+								>
+									&#x2715;
+								</div>
+							)}
+
+							{this.state.isViewingSingleNote ? null : (
+								<div
+									className="NoteEditSingleButton"
+									onClick={_ => this.detailedNoteView({})}
+									style={{ display: 'none' }}
+								>
+									<span role="img" aria-label="magnifying-glass">
+										&#x1f50d;
+									</span>
+								</div>
+							)}
+						</div>
+
+						<div className="NoteContainer">
+							<Note note={{ id: -1, title: '', text: '' }} />
+						</div>
+					</div>
+				) : null}
+
 				{this.state.displayNotes.filter(
 					note =>
 						note.title.includes(this.props.searchQuery) ||
@@ -107,4 +143,4 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps, { deleteNote })(Notes);
+export default connect(mapStateToProps, { addNote, deleteNote })(Notes);

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import TextareaAutosize from 'react-autosize-textarea';
 
+import '../../styles/css/index.css';
+
 class AddNewNote extends Component {
 	state = {
 		title: '',
