@@ -12,11 +12,9 @@ class NoteText extends Component {
 		this.setState({ text: this.props.text });
 	}
 
-	shouldComponentUpdate(nextProps, nextState) {
-		console.log(nextProps);
-		console.log(nextState);
-		return true;
-	}
+	// shouldComponentUpdate(nextProps, nextState) {
+	// 	return true;
+	// }
 
 	handleInputChange = e => {
 		this.setState({ text: e.target.value });
