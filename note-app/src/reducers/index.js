@@ -80,6 +80,17 @@ const rootReducer = (state = initialState, action) => {
 					error: 'Please enter a password',
 				};
 
+			// ******************************************
+			// ** DO NOT STORE PASSWORDS AS PLAIN TEXT **
+			// ******************************************
+			localStorage.setItem(
+				'notes-app-id-1941293123912',
+				JSON.stringify(action.payload),
+			);
+			// ******************************************
+			// ** DO NOT STORE PASSWORDS AS PLAIN TEXT **
+			// ******************************************
+
 			return {
 				...state,
 				users: [...state.users, action.payload],

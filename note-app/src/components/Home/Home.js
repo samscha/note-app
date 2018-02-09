@@ -2,8 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
+import { signOut } from '../../actions';
+
+import '../../styles/css/index.css';
+
 const Home = props => {
 	const deleteLocalStorageUser = _ => {
+		props.signOut(
+			JSON.parse(localStorage.getItem('notes-app-id-1941293123912')).username,
+		);
+
 		localStorage.removeItem('notes-app-id-1941293123912');
 	};
 
@@ -51,4 +59,4 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps, {})(Home);
+export default connect(mapStateToProps, { signOut })(Home);
