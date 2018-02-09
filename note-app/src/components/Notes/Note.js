@@ -105,8 +105,14 @@ class Note extends Component {
 					<div
 						className="SingleNoteViewButtons"
 						onClick={this.cancelEditSingleNoteButtonClickHandler}
+						style={{
+							background: 'white',
+							color: 'black',
+							opacity: '0.2',
+							cursor: 'not-allowed',
+						}}
 					>
-						cancel edit (NOT WORKING)
+						cancel edit
 					</div>
 				) : null}
 			</div>

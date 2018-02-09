@@ -11,11 +11,11 @@ class NoteTitle extends Component {
 		this.setState({ title: this.props.title });
 	}
 
-	componentWillReceivePRops(nextProps) {
-		if (nextProps.title !== this.state.title) {
-			this.setState({ title: nextProps.title });
-		}
-	}
+	// componentWillReceiveProps(nextProps) {
+	// 	if (nextProps.title !== this.state.title) {
+	// 		this.setState({ title: nextProps.title });
+	// 	}
+	// }
 
 	handleInputChange = e => {
 		this.setState({ title: e.target.value });
