@@ -1,7 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-const Home = _ => {
+const Home = props => {
 	const deleteLocalStorageUser = _ => {
 		localStorage.removeItem('notes-app-id-1941293123912');
 	};
@@ -13,10 +14,15 @@ const Home = _ => {
 			{Object.keys(localStorage).includes('notes-app-id-1941293123912') ? (
 				<div className="HomeLocalStorageUserExists">
 					<NavLink to="/login" className="Home__redirectButton">
-						{`Log in as ${
-							JSON.parse(localStorage.getItem('notes-app-id-1941293123912'))
-								.username
-						}`}
+						{props.isLoggedIn
+							? `Go to ${
+									JSON.parse(localStorage.getItem('notes-app-id-1941293123912'))
+										.username
+								}'s notes`
+							: `Log in as ${
+									JSON.parse(localStorage.getItem('notes-app-id-1941293123912'))
+										.username
+								}`}
 					</NavLink>
 
 					<NavLink
@@ -39,4 +45,10 @@ const Home = _ => {
 	);
 };
 
-export default Home;
+const mapStateToProps = state => {
+	return {
+		isLoggedIn: state.isLoggedIn,
+	};
+};
+
+export default connect(mapStateToProps, {})(Home);
