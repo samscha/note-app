@@ -71,6 +71,35 @@ class Notes extends Component {
 									)}
 
 									{this.state.isViewingSingleNote ? null : (
+										<div className="ChangeColorButtons">
+											<div
+												className="ChangeColorButton"
+												style={{ background: '#ff8080' }}
+											/>
+
+											<div
+												className="ChangeColorButton"
+												style={{ background: '#90ee90' }}
+											/>
+
+											<div
+												className="ChangeColorButton"
+												style={{ background: '#ffff7e' }}
+											/>
+
+											<div
+												className="ChangeColorButton"
+												style={{ background: '#c1e1ec' }}
+											/>
+
+											<div
+												className="ChangeColorButton"
+												style={{ background: 'white' }}
+											/>
+										</div>
+									)}
+
+									{this.state.isViewingSingleNote ? null : (
 										<div
 											className="NoteEditSingleButton"
 											onClick={_ => this.detailedNoteView(note)}

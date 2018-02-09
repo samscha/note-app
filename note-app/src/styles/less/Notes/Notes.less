@@ -40,6 +40,28 @@
 				}
 			}
 
+			.ChangeColorButtons {
+				display: flex;
+				flex-direction: row;
+
+				.ChangeColorButton {
+					.button(@height: 18px);
+
+					.border-radius(50%);
+
+					width: 18px;
+
+					margin: 0 2px;
+					padding: 4px;
+
+					font-size: 0.9rem;
+
+					&:hover {
+						cursor: pointer;
+					}
+				}
+			}
+
 			.NoteEditSingleButton {
 				margin-right: 4px;
 
