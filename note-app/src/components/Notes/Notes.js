@@ -88,6 +88,14 @@ class Notes extends Component {
 							</div>
 						);
 					})}
+
+				{this.state.displayNotes.filter(
+					note =>
+						note.title.includes(this.props.searchQuery) ||
+						note.text.includes(this.props.searchQuery),
+				).length === 0 ? (
+					<div class="NotesNoSearchResults">No search results</div>
+				) : null}
 			</div>
 		);
 	}
