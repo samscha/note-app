@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import { checkSignUp, signUpUser } from '../../actions';
+import { resetError, checkSignUp, signUpUser } from '../../actions';
 
 import '../../styles/css/index.css';
 
@@ -11,6 +11,10 @@ class Signup extends Component {
 		username: '',
 		password: '',
 	};
+
+	componentWillMount() {
+		this.props.resetError();
+	}
 
 	inputHandler = e => {
 		this.setState({ [e.target.name]: e.target.value });
@@ -82,6 +86,7 @@ class Signup extends Component {
 												color: 'black',
 												opacity: '0.2',
 												fontSize: '0.7rem',
+												cursor: 'not-allowed',
 											}
 										: null
 								}
@@ -106,4 +111,8 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps, { checkSignUp, signUpUser })(Signup);
+export default connect(mapStateToProps, {
+	resetError,
+	checkSignUp,
+	signUpUser,
+})(Signup);

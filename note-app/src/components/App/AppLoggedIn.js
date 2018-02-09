@@ -89,6 +89,7 @@ class AppLoggedIn extends Component {
 
           <div className="AppLoggedInMiddleItems">
             <SearchBar
+              isAddingNote={this.state.isAddingNote}
               updateSearchQuery={this.updateSearchQuery.bind(this)}
               resetQuery={this.resetQuery}
             />
@@ -96,7 +97,18 @@ class AppLoggedIn extends Component {
 
           <div
             className="AppLoggedInMidStatusBar__rightItem"
-            onClick={this.deleteAllNotes}
+            onClick={this.state.isAddingNote ? null : this.deleteAllNotes}
+            style={
+              this.state.isAddingNote
+                ? {
+                    background: 'white',
+                    color: 'black',
+                    opacity: '0.2',
+                    fontSize: '0.7rem',
+                    cursor: 'not-allowed',
+                  }
+                : null
+            }
           >
             {' '}
             &#x2715;
