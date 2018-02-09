@@ -12,6 +12,7 @@ class Notes extends Component {
 		displayNotes: [],
 		isEditingAllNotes: false,
 		isViewingSingleNote: false,
+		colorClicked: { id: -1, color: '' },
 	};
 
 	componentDidMount() {
@@ -46,6 +47,10 @@ class Notes extends Component {
 		// this.props.addNote(note);
 	};
 
+	colorClickedHandler = (noteId, colorClicked) => {
+		this.setState({ id: noteId, color: colorClicked });
+	};
+
 	render() {
 		return (
 			<div className="Notes">
@@ -75,6 +80,9 @@ class Notes extends Component {
 											<div
 												className="ChangeColorButton"
 												style={{ background: '#ff8080' }}
+												onClick={_ =>
+													this.colorClickedHandler(note.id, '#ff8080')
+												}
 											/>
 
 											<div
@@ -114,6 +122,11 @@ class Notes extends Component {
 								<div className="NoteContainer">
 									<Note
 										note={note}
+										colorClicked={
+											this.state.colorClicked.id === note.id
+												? this.state.colorClicked.color
+												: null
+										}
 										isViewingSingleNote={this.state.isViewingSingleNote}
 										returnToAllNotes={this.returnToAllNotes}
 									/>

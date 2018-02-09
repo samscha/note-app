@@ -83,14 +83,28 @@ class Note extends Component {
 		return (
 			<div
 				className="Note"
-				style={this.props.isViewingSingleNote ? { width: '100%%' } : null}
+				style={
+					this.props.isViewingSingleNote
+						? this.props.colorClicked === null
+							? { width: '100%%' }
+							: { background: `${this.props.colorClicked}`, width: '100%' }
+						: null
+				}
 			>
 				<NoteTitle
 					title={this.props.note.title}
 					editTitleHandler={this.editTitle}
 				/>
 
-				<NoteText text={this.props.note.text} editTextHandler={this.editText} />
+				<NoteText
+					text={this.props.note.text}
+					editTextHandler={this.editText}
+					style={
+						this.props.colorClicked === null
+							? null
+							: { setBackgroundColor: `${this.props.colorClicked}` }
+					}
+				/>
 
 				{this.props.isViewingSingleNote ? (
 					<div
