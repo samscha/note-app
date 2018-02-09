@@ -25,6 +25,7 @@ class Notes extends Component {
 
 	detailedNoteView = note => {
 		this.setState({ displayNotes: [note], isViewingSingleNote: true });
+		this.props.disableStatusBarButtonsHandler();
 	};
 
 	returnToAllNotes = _ => {
@@ -32,10 +33,12 @@ class Notes extends Component {
 			displayNotes: [...this.state.notes],
 			isViewingSingleNote: false,
 		});
+		this.props.disableStatusBarButtonsHandler();
 	};
 
 	deleteNoteButtonClickedHandler = noteId => {
 		this.setState({ isViewingSingleNote: false });
+		this.props.disableStatusBarButtonsHandler();
 		this.props.deleteNote(noteId);
 	};
 

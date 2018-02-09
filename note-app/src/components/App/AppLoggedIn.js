@@ -14,6 +14,7 @@ class AppLoggedIn extends Component {
     isAddingNote: false,
     notes: [],
     searchQuery: '',
+    disableStatusBarButtons: false,
   };
 
   componentDidMount() {
@@ -72,6 +73,12 @@ class AppLoggedIn extends Component {
     this.props.deleteAllNotes();
   };
 
+  disableStatusBarButtonsHandler = _ => {
+    this.setState({
+      disableStatusBarButtons: !this.state.disableStatusBarButtons,
+    });
+  };
+
   render() {
     return (
       <div className="AppLoggedIn">
@@ -82,7 +89,22 @@ class AppLoggedIn extends Component {
         <div className="AppLoggedInMidStatusBar">
           <div
             className="AppLoggedInMidStatusBar__addNewNoteButton"
-            onClick={this.addNewNoteButtonClickedHandler}
+            onClick={
+              this.state.disableStatusBarButtons
+                ? null
+                : this.addNewNoteButtonClickedHandler
+            }
+            style={
+              this.state.disableStatusBarButtons
+                ? {
+                    background: 'white',
+                    color: 'black',
+                    opacity: '0.2',
+                    fontSize: '0.7rem',
+                    cursor: 'not-allowed',
+                  }
+                : null
+            }
           >
             {this.state.isAddingNote ? '-' : '+'}
           </div>
@@ -90,6 +112,8 @@ class AppLoggedIn extends Component {
           <div className="AppLoggedInMiddleItems">
             <SearchBar
               isAddingNote={this.state.isAddingNote}
+              disableStatusBarButtons={this.state.disableStatusBarButtons}
+              noNotes={this.state.notes.length === 0}
               updateSearchQuery={this.updateSearchQuery.bind(this)}
               resetQuery={this.resetQuery}
             />
@@ -97,9 +121,17 @@ class AppLoggedIn extends Component {
 
           <div
             className="AppLoggedInMidStatusBar__rightItem"
-            onClick={this.state.isAddingNote ? null : this.deleteAllNotes}
+            onClick={
+              this.state.isAddingNote ||
+              this.state.notes.length === 0 ||
+              this.state.disableStatusBarButtons
+                ? null
+                : this.deleteAllNotes
+            }
             style={
-              this.state.isAddingNote
+              this.state.isAddingNote ||
+              this.state.notes.length === 0 ||
+              this.state.disableStatusBarButtons
                 ? {
                     background: 'white',
                     color: 'black',
@@ -130,6 +162,9 @@ class AppLoggedIn extends Component {
             <Notes
               notes={this.state.notes}
               searchQuery={this.state.searchQuery}
+              disableStatusBarButtonsHandler={
+                this.disableStatusBarButtonsHandler
+              }
             />
           )
         ) : (

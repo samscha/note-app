@@ -10,7 +10,9 @@ const SearchBar = props => {
 				type="text"
 				placeholder="Search"
 				onBlur={props.resetQuery}
-				disabled={props.isAddingNote}
+				disabled={
+					props.isAddingNote || props.noNotes || props.disableStatusBarButtons
+				}
 			/>
 		</div>
 	);
