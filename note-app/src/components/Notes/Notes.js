@@ -94,7 +94,7 @@ class Notes extends Component {
 						note.title.includes(this.props.searchQuery) ||
 						note.text.includes(this.props.searchQuery),
 				).length === 0 ? (
-					<div class="NotesNoSearchResults">No search results</div>
+					<div className="NotesNoSearchResults">No search results</div>
 				) : null}
 			</div>
 		);
