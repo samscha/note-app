@@ -23,6 +23,17 @@ class Note extends Component {
 		});
 	}
 
+	// componentWillReceiveProps(nextProps) {
+	// 	console.log(nextProps.note);
+	// 	if (
+	// 		nextProps.note.title !== this.state.title ||
+	// 		nextProps.note.text !== this.state.text
+	// 	) {
+	// 		this.setState({ title: nextProps.note.title, text: nextProps.note.text });
+	// 	}
+	// 	console.log(this.state);
+	// }
+
 	editTitle = editedTitle => {
 		if (!this.props.isViewingSingleNote)
 			this.props.editNote({ ...this.state, title: editedTitle });
@@ -46,13 +57,16 @@ class Note extends Component {
 		this.props.returnToAllNotes();
 	};
 
-	/*
 	cancelEditSingleNoteButtonClickHandler = _ => {
-		console.log(this.props.note);
-		console.log(this.state);
-
-		this.props.returnToAllNotes();
+		// this.props.editNote({
+		// 	...this.state,
+		// 	title: this.props.note.title,
+		// 	text: this.props.note.text,
+		// });
+		// this.props.returnToAllNotes();
 	};
+	/*
+
 
 
 				{this.props.isViewingSingleNote ? (
@@ -67,7 +81,10 @@ class Note extends Component {
 
 	render() {
 		return (
-			<div className="Note">
+			<div
+				className="Note"
+				style={this.props.isViewingSingleNote ? { width: '100%%' } : null}
+			>
 				<NoteTitle
 					title={this.props.note.title}
 					editTitleHandler={this.editTitle}
@@ -81,6 +98,15 @@ class Note extends Component {
 						onClick={this.confirmEditButtonClickedHandler}
 					>
 						confirm edit
+					</div>
+				) : null}
+
+				{this.props.isViewingSingleNote ? (
+					<div
+						className="SingleNoteViewButtons"
+						onClick={this.cancelEditSingleNoteButtonClickHandler}
+					>
+						cancel edit (NOT WORKING)
 					</div>
 				) : null}
 			</div>
